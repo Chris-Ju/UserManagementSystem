@@ -4,12 +4,12 @@ use UMS;
 create table Employee(
   eid int not null auto_increment,
   ename char(255) not null,
-  eage int not null,
+  ebirth date not null,
   status int not null,
-  esex char(1) default "M" check(sex == "M" or sex == "F"),
+  esex char(1) default "M" check(sex = "M" or sex = "F"),
   ehometown char(255),
   ebody char(255),
-  primary key(id)
+  primary key(eid)
 ) auto_increment = 1;
 
 create table Department(
@@ -25,7 +25,7 @@ create table EmployeeInDepartment(
   did int not null,
   primary key(eid, did),
   foreign key(eid) references Employee(eid) on delete cascade,
-  foreign key(did) references Department(did) on delete cascade,
+  foreign key(did) references Department(did) on delete cascade
 );
 
 create table EmployeeChange(
@@ -44,7 +44,7 @@ create table Contracts(
   bdate date not null,
   edate date,
   primary key(eid, bdate),
-  foreign key(eid) Employee(eid)
+  foreign key(eid) references Employee(eid)
 );
 
 create table Attendance(
@@ -54,7 +54,7 @@ create table Attendance(
   bdate date not null,
   edate date,
   primary key(aid),
-  foreign key(eid) Employee(eid)
+  foreign key(eid) references Employee(eid)
 ) auto_increment = 1;
 
 create table Rewards(
@@ -63,7 +63,7 @@ create table Rewards(
   rreason char(255) not null,
   rway int not null,
   rdate date not null,
-  rmoney int not null
+  rmoney int not null,
   primary key(rid),
   foreign key(eid) references Employee(eid)
 ) auto_increment = 1;
@@ -82,6 +82,7 @@ create table User(
   uid int not null auto_increment,
   username char(20) not null,
   password char(255) not null,
-  right int not null,
+  uright int not null,
   primary key(uid)
 ) auto_increment = 1;
+
