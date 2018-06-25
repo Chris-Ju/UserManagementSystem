@@ -1,8 +1,9 @@
 var mysql = require('./connection');
 
-module.exports = () => {
+
+module.exports = (username, password) => {
   mysql.connect();
-  var sql = 'SELECT aid, ename, AW.name, bdate, edate FROM Employee E, Attendance A, AttendanceWay AW where A.away = AW.way and E.eid = A.eid';
+  var sql = 'SELECT username, password FROM User';
   var data = [];
   mysql.query(sql, function (err, result) {
     if (err) {
@@ -11,8 +12,12 @@ module.exports = () => {
       return false;
     }
     data = result;
-    console.log('[QUERY Attendance SUCCESSFULLY]');
+    console.log('[QUERY Username and password SUCCESSFULLY]');
   });
   mysql.end();
-  return data;
+  if (result.length == 0) {
+    return false;
+  } else {
+    return true;
+  }
 };

@@ -11,7 +11,7 @@ module.exports = () => {
       return false;
     }
     data = result;
-    console.log('[QUERY User SUCCESSFULLY]');
+    console.log('[QUERY Department SUCCESSFULLY]');
   });
   mysql.end();
   return data;

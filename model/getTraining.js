@@ -12,7 +12,7 @@ module.exports = () => {
       return false;
     }
     data = result;
-    console.log('[QUERY User SUCCESSFULLY]');
+    console.log('[QUERY Training SUCCESSFULLY]');
   });
   mysql.end();
   return data;

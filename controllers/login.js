@@ -1,9 +1,11 @@
+var login = require('../model/login');
+
 module.exports = {
   'POST /signin': async (ctx, next) => {
     var
-      email = ctx.request.body.email || '',
+      username = ctx.request.body.username || '',
       password = ctx.request.body.password || '';
-    if (email === 'admin@example.com' && password === '123456') {
+    if (login(username, password)) {
       console.log('signin ok!');
       ctx.render('signin-ok.html', {
         title: 'Sign In OK',
