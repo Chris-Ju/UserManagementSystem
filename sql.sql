@@ -31,21 +31,22 @@ create table EmployeeInDepartment(
 create table EmployeeChange(
   cid int not null auto_increment,
   eid int not null,
-  did int not null,
-  cway int not null,
-  bdate date not null,
-  edate date,
+  cway int not null default 1,
+  cdate date not null,
+  tdid int,
+  fdid int,
   primary key(cid)
 ) auto_increment = 1;
 
 create table Contracts(
+  cid int not null auto_increment,
   eid int not null,
   salary int not null,
   bdate date not null,
   edate date,
-  primary key(eid, bdate),
+  primary key(cid),
   foreign key(eid) references Employee(eid)
-);
+) auto_increment = 1;
 
 create table Attendance(
   aid int not null auto_increment,
