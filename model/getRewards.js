@@ -1,9 +1,8 @@
 var mysql = require('./connection');
 
-
 module.exports = () => {
   mysql.connect();
-  var sql = 'SELECT username, uright FROM User';
+  var sql = 'SELECT rid, ename, rreason, RW.name, rdate, rmoney FROM Employee E, Rewards R, RewardsWay RW where R.rway = RW.way and E.eid = R.eid';
   var data = [];
   mysql.query(sql, function (err, result) {
     if (err) {

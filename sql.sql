@@ -87,3 +87,47 @@ create table User(
   primary key(uid)
 ) auto_increment = 1;
 
+create table TrainingWay(
+  way int not null,
+  name char(20) not null
+);
+
+create table RewardsWay(
+  way int not null,
+  name char(20) not null
+);
+
+create table AttendanceWay(
+  way int not null,
+  name char(20) not null
+);
+
+create table EmployeeChangeWay(
+  way int not null,
+  name char(20) not null
+);
+
+create table EmployeeStatus(
+  status int not null,
+  name char(20) not null
+);
+
+insert into EmployeeStatus value(1, "in-service");
+insert into EmployeeStatus value(2, "departure");
+
+insert into TrainingWay value(1, "student");
+insert into TrainingWay value(2, "teacher");
+
+insert into RewardsWay value(1, "bonus");
+insert into RewardsWay value(2, "fine");
+
+insert into AttendanceWay value(1, "leave");
+insert into AttendanceWay value(2, "completion");
+insert into AttendanceWay value(3, "overtime");
+
+insert into EmployeeChangeWay value(1, "take office");
+insert into EmployeeChangeWay value(2, "departure");
+insert into EmployeeChangeWay value(3, "transfer department");
+
+
+
