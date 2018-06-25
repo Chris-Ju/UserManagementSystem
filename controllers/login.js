@@ -7,15 +7,10 @@ module.exports = {
       password = ctx.request.body.password || '';
     if (login(username, password)) {
       console.log('signin ok!');
-      ctx.render('signin-ok.html', {
-        title: 'Sign In OK',
-        name: 'Mr Node'
-      });
+      ctx.response.body = "True";
     } else {
       console.log('signin failed!');
-      ctx.render('signin-failed.html', {
-        title: 'Sign In Failed'
-      });
+      ctx.response.body = "False";
     }
   }
 };

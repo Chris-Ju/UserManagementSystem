@@ -1,7 +1,10 @@
+var getUser = require('../model/getUsers');
+
 module.exports = {
   'GET /': async (ctx, next) => {
-    ctx.render('index.html', {
-      title: 'Welcome'
-    });
+    
+  },
+  'GET /GetUser': async (ctx, next) => {
+    ctx.response.body = getUser();
   }
 };
