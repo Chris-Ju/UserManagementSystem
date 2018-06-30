@@ -3,7 +3,11 @@ var db = require('../model/db');
 
 module.exports = {
   'GET /GetUser': async (ctx, next) => {
-    ctx.response.body = db.getUser();
+    db.getUser((result) => {
+      if (!result) {
+        ctx.response.body = result;
+      }
+    });
   },
   'GET /GetEmployee': async (ctx, next) => {
     ctx.response.body = db.getEmployee();
@@ -41,21 +45,21 @@ module.exports = {
   'POST /newEmployee': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newEmployee(data.name, data.birth, data.sex,
-       data.hometown, data.body, data.departemnt);
+      data.hometown, data.body, data.departemnt);
   },
   'POST /newEmployeeChange': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = db.newEmployeeChange(data.eid, data.cway, 
+    ctx.response.body = db.newEmployeeChange(data.eid, data.cway,
       data.cdate, data.tdid, data.fdid);
   },
   'POST /newRewards': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newReward(data.eid, data.rreason,
-       data.rway, data.rdate, data.rmoney);
+      data.rway, data.rdate, data.rmoney);
   },
   'POST /newTraining': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = db.newTraining(data.eid, data.way, 
+    ctx.response.body = db.newTraining(data.eid, data.way,
       data.bdate, data.edate);
   }
 };
