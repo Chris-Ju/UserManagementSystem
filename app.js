@@ -1,45 +1,45 @@
-const Koa = require('koa');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-const bodyParser = require('koa-bodyparser');
+var index = require('./routes/index');
+var users = require('./routes/users');
 
-const controller = require('./controller');
+var app = express();
 
-const templating = require('./templating');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-const router = require('koa-router')();
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-const app = new Koa();
+app.use('/', index);
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-// log request URL:
-app.use(async (ctx, next) => {
-  console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
-  var
-    start = new Date().getTime(),
-    execTime;
-  await next();
-  execTime = new Date().getTime() - start;
-  ctx.response.set('X-Response-Time', `${execTime}ms`);
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-// static file support:
-if (!isProduction) {
-  let staticFiles = require('./static-files');
-  app.use(staticFiles('/static/', __dirname + '/static'));
-}
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-// parse request body:
-app.use(bodyParser());
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-// add nunjucks as view:
-app.use(templating('views', {
-  noCache: !isProduction,
-  watch: !isProduction
-}));
-
-// add controller:
-app.use(controller()).use(router.allowedMethods());
-
-app.listen(3000);
-console.log('app started at port 3000...');
+module.exports = app;
