@@ -5,7 +5,7 @@ module.exports = {
   'GET /GetUser': async (ctx, next) => {
     db.getUser((result) => {
       console.log(result);
-      if (result) {
+      if (result != false) {
         ctx.response.body = result;
       }
     });
