@@ -1,77 +1,61 @@
-var getUser = require('../model/getUsers'),
-    getEmployee = require('../model/getEmployee'),
-    getAttendance = require('../model/getAttendance'),
-    getContracts = require('../model/getContracts'),
-    getDepartment = require('../model/getDepartment'),
-    getEmployeeChange = require('../model/getEmployeeChange'),
-    getRewards = require('../model/getRewards'),
-    getTraining = require('../model/getTraining'),
-    login = require('../model/login'),
-    newAttendance = require('../model/newAttendance'),
-    newContract = require('../model/newContract'),
-    newDepartment = require('../model/newDepartment'),
-    newEmployee = require('../model/newEmployee'),
-    newEmployeeChange = require('../model/newEmployeeChange'),
-    newReward = require('../model/newReward'),
-    newTraining = require('../model/newTraining');
+var db = require('../model/db');
+
 
 module.exports = {
   'GET /GetUser': async (ctx, next) => {
-    console.log(getUser());
-    //ctx.response.body = ;
+    ctx.response.body = db.getUser();
   },
   'GET /GetEmployee': async (ctx, next) => {
-    ctx.response.body = getEmployee();
+    ctx.response.body = db.getEmployee();
   },
   'GET /GetEmployeeChange': async (ctx, next) => {
-    ctx.response.body = getEmployeeChange();
+    ctx.response.body = db.getEmployeeChange();
   },
   'GET /GetAttendance': async (ctx, next) => {
-    ctx.response.body = getAttendance();
-    next();
+    ctx.response.body = db.getAttendance();
   },
   'GET /GetContracts': async (ctx, next) => {
-    ctx.response.body = getContracts();
+    ctx.response.body = db.getContracts();
   },
   'GET /GetDepartment': async (ctx, next) => {
-    ctx.response.body = getDepartment();
+    ctx.response.body = db.getDepartment();
   },
   'GET /GetRewards': async (ctx, next) => {
-    ctx.response.body = getRewards();
+    ctx.response.body = db.getRewards();
   },
   'GET /GetTraining': async (ctx, next) => {
-    ctx.response.body = getTraining();
+    ctx.response.body = db.getTraining();
   },
   'POST /newAttendance': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newAttendance(data.eid, data.away, data.bdate, data.edate);
+    ctx.response.body = db.newAttendance(data.eid, data.away, data.bdate, data.edate);
   },
   'POST /newContracts': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newContract(data.eid, data.salary, data.bdate, data.edate);
+    ctx.response.body = db.newContract(data.eid, data.salary, data.bdate, data.edate);
   },
   'POST /newDepartment': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newDepartment(data.name);
+    ctx.response.body = db.newDepartment(data.name);
   },
   'POST /newEmployee': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newEmployee(data.name, data.birth, data.sex,
-      data.hometown, data.body, data.departemnt);
+    ctx.response.body = db.newEmployee(data.name, data.birth, data.sex,
+       data.hometown, data.body, data.departemnt);
   },
   'POST /newEmployeeChange': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newEmployeeChange(data.eid, data.cway,
+    ctx.response.body = db.newEmployeeChange(data.eid, data.cway, 
       data.cdate, data.tdid, data.fdid);
   },
   'POST /newRewards': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newReward(data.eid, data.rreason,
-      data.rway, data.rdate, data.rmoney);
+    ctx.response.body = db.newReward(data.eid, data.rreason,
+       data.rway, data.rdate, data.rmoney);
   },
   'POST /newTraining': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = newTraining(data.eid, data.way,
+    ctx.response.body = db.newTraining(data.eid, data.way, 
       data.bdate, data.edate);
   }
 };

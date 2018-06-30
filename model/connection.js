@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+var mysql = require('promise-mysql');
 
 module.exports = mysql.createConnection({
   host: 'localhost',
