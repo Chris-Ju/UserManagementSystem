@@ -8,12 +8,10 @@ module.exports = (name) => {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       msql.end();
-      return false;
+      callback(false);
     }
     console.log('[INSERT Department SUCCESSFULLY]');
-  }).then(() => {
     msql.end();
-    return true;
+    callback(true);
   });
-
 };

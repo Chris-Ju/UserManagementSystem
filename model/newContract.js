@@ -13,12 +13,10 @@ module.exports = (eid, salary, bdate, edate) => {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       mysql.end();
-      return false;
+      callback(false);
     }
     console.log('[INSERT INTO Contracts SUCCESSFULLY]');
-  }).then(() => {
     mysql.end();
-    return true;
+    callback(true);
   });
-
 };

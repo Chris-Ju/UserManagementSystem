@@ -1,6 +1,6 @@
 var mysql = require('./connection');
 
-module.exports = (eid, cway, cdate, tdid, fdid) => {
+module.exports = (eid, cway, cdate, tdid, fdid, callback) => {
   mysql.connect();
   var sql = 'INSERT INTO EmployeeChange(eid, cway, cdate, tdid, fdid) VALUES(?,?,?,?,?)';
   var sqlparamas = [eid, cway, cdate, tdid, fdid];
@@ -8,11 +8,10 @@ module.exports = (eid, cway, cdate, tdid, fdid) => {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       msql.end();
-      return false;
+      callback(false);
     }
     console.log('[INSERT EmployeeChange SUCCESSFULLY]');
-  }).then(() => {
     msql.end();
-    return true;
+    callback(true);
   });
 };

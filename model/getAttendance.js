@@ -1,23 +1,16 @@
 var mysql = require('./connection');
 
-module.exports = () => {
-  var promise = new Promise(() => {
-    mysql.connect();
-    var sql = 'SELECT aid, ename, AW.name, bdate, edate FROM Employee E, Attendance A, AttendanceWay AW where A.away = AW.way and E.eid = A.eid';
-    var data = [];
-    mysql.query(sql, function (err, result) {
-      if (err) {
-        console.log('[QUERY ERROR] - ', err.message);
-        mysql.end();
-        return false;
-      }
-      data = result;
-      console.log('[QUERY Attendance SUCCESSFULLY]');
-    })
-  });
-  promise().then(() => {
+module.exports = (callback) => {
+  mysql.connect();
+  var sql = 'SELECT aid, ename, AW.name, bdate, edate FROM Employee E, Attendance A, AttendanceWay AW where A.away = AW.way and E.eid = A.eid';
+  mysql.query(sql, function (err, result) {
+    if (err) {
+      console.log('[QUERY ERROR] - ', err.message);
+      mysql.end();
+      callback(false);
+    }
     mysql.end();
-    return data;
+    console.log('[QUERY Attendance SUCCESSFULLY]');
+    callback(result);
   });
-
 };

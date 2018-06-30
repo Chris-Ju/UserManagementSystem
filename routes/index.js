@@ -1,8 +1,18 @@
 var express = require('express');
 var db = require('../model/db');
+var bodyParser = require('body-parser');
 var router = express.Router();
 
 /* GET home page. */
+
+router.get('/signin', (req, res, next) => {
+  var data = req.body;
+  db.login(data.username, data.password, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
 router.get('/GetUser', (req, res, next) => {
   db.getUser((result) => {
     res.status(200);
@@ -10,60 +20,109 @@ router.get('/GetUser', (req, res, next) => {
   });
 });
 
-/*
-  module.exports = {
-    'GET /GetEmployee': async (ctx, next) => {
-      ctx.response.body = db.getEmployee();
-    },
-    'GET /GetEmployeeChange': async (ctx, next) => {
-      ctx.response.body = db.getEmployeeChange();
-    },
-    'GET /GetAttendance': async (ctx, next) => {
-      ctx.response.body = db.getAttendance();
-    },
-    'GET /GetContracts': async (ctx, next) => {
-      ctx.response.body = db.getContracts();
-    },
-    'GET /GetDepartment': async (ctx, next) => {
-      ctx.response.body = db.getDepartment();
-    },
-    'GET /GetRewards': async (ctx, next) => {
-      ctx.response.body = db.getRewards();
-    },
-    'GET /GetTraining': async (ctx, next) => {
-      ctx.response.body = db.getTraining();
-    },
-    'POST /newAttendance': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newAttendance(data.eid, data.away, data.bdate, data.edate);
-    },
-    'POST /newContracts': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newContract(data.eid, data.salary, data.bdate, data.edate);
-    },
-    'POST /newDepartment': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newDepartment(data.name);
-    },
-    'POST /newEmployee': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newEmployee(data.name, data.birth, data.sex,
-        data.hometown, data.body, data.departemnt);
-    },
-    'POST /newEmployeeChange': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newEmployeeChange(data.eid, data.cway,
-        data.cdate, data.tdid, data.fdid);
-    },
-    'POST /newRewards': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newReward(data.eid, data.rreason,
-        data.rway, data.rdate, data.rmoney);
-    },
-    'POST /newTraining': async (ctx, next) => {
-      var data = ctx.request.body;
-      ctx.response.body = db.newTraining(data.eid, data.way,
-        data.bdate, data.edate);
-    }
-  };*/
+router.get('GetEmployee', (req, res, next) => {
+  db.getEmployee((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetEmployeeChange', (req, res, next) => {
+  db.getEmployeeChange((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetAttendance', (req, res, next) => {
+  db.getAttendance((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetContracts', (req, res, next) => {
+  db.getContracts((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetDepartment', (req, res, next) => {
+  db.getDepartment((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetRewards', (req, res, next) => {
+  db.getRewards((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.get('/GetTraining', (req, res, next) => {
+  db.getTraining((result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newAttendance', (req, res, next) => {
+  var data = req.body;
+  db.newAttendance(data.eid, data.away, data.bdate, data.edate, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newContract', (req, res, next) => {
+  var data = req.body;
+  db.newContract(data.eid, data.salary, data.bdate, data.edate, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newDepartment', (req, res, next) => {
+  var data = req.body;
+  db.newDepartment(data.name, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newEmployee', (req, res, next) => {
+  var data = req.body;
+  db.newEmployee(data.name, data.birth, data.sex, data.hometown, data.body, data.deparment, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newEmployeeChange', (req, res, next) => {
+  var data = req.body;
+  db.newEmployeeChange(data.eid, data.cway, data.cdate, data.tdid, data.fdid, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newReward', (req, res, next) => {
+  var data = req.body;
+  db.newReward(data.eid, data.rreason, data.rway, data.rdate, data.rmoney, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.post('/newTraining', (req, res, next) => {
+  var data = req.body;
+  db.newTraining(data.eid, data.way, data.bdate, data.edate, () => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
 module.exports = router;
