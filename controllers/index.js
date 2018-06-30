@@ -3,7 +3,7 @@ var db = require('../model/db');
 
 module.exports = {
   'GET /GetUser': async (ctx) => {
-    db.getUser((result) => {
+    await db.getUser((result) => {
       console.log(result);
       ctx.response.status = 200;
       ctx.response.body = result;
