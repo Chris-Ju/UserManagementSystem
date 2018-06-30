@@ -14,6 +14,6 @@ module.exports = async () => {
     data = result;
     console.log('[QUERY User SUCCESSFULLY]');
   });
-  mysql.end();
+  await mysql.end();
   return data;
 };
