@@ -2,11 +2,11 @@ var db = require('../model/db');
 
 
 module.exports = {
-  'GET /GetUser': async (ctx, next) => {
+  'GET /GetUser': async (ctx) => {
     db.getUser((result) => {
       console.log(result);
       if (result != false) {
-        ctx.body = result;
+        ctx.response.body = result;
       }
     });
   },
