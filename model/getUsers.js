@@ -18,6 +18,8 @@ module.exports = () => {
   }).then(() => {
     mysql.end();
     return data;
+  }).catch((reson) => {
+    console.log('Failed：' + reason);
   });
 
 };
