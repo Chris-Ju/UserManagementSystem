@@ -2,60 +2,62 @@ var db = require('../model/db');
 
 
 module.exports = {
-  'GET /GetUser': ctx => {
-    ctx.response.body = db.getUser();
+  'GET /GetUser': async (ctx, next) => {
+    console.log(db.getUser());
+    //ctx.response.body = ;
   },
-  'GET /GetEmployee': ctx => {
+  'GET /GetEmployee': async (ctx, next) => {
     ctx.response.body = db.getEmployee();
   },
-  'GET /GetEmployeeChange': ctx => {
+  'GET /GetEmployeeChange': async (ctx, next) => {
     ctx.response.body = db.getEmployeeChange();
   },
-  'GET /GetAttendance': ctx => {
+  'GET /GetAttendance': async (ctx, next) => {
     ctx.response.body = db.getAttendance();
+    next();
   },
-  'GET /GetContracts': ctx => {
+  'GET /GetContracts': async (ctx, next) => {
     ctx.response.body = db.getContracts();
   },
-  'GET /GetDepartment': ctx => {
+  'GET /GetDepartment': async (ctx, next) => {
     ctx.response.body = db.getDepartment();
   },
-  'GET /GetRewards': ctx => {
+  'GET /GetRewards': async (ctx, next) => {
     ctx.response.body = db.getRewards();
   },
-  'GET /GetTraining': ctx => {
+  'GET /GetTraining': async (ctx, next) => {
     ctx.response.body = db.getTraining();
   },
-  'POST /newAttendance': ctx => {
+  'POST /newAttendance': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newAttendance(data.eid, data.away, data.bdate, data.edate);
   },
-  'POST /newContracts': ctx => {
+  'POST /newContracts': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newContract(data.eid, data.salary, data.bdate, data.edate);
   },
-  'POST /newDepartment': ctx => {
+  'POST /newDepartment': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newDepartment(data.name);
   },
-  'POST /newEmployee': ctx => {
+  'POST /newEmployee': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newEmployee(data.name, data.birth, data.sex,
-      data.hometown, data.body, data.departemnt);
+       data.hometown, data.body, data.departemnt);
   },
-  'POST /newEmployeeChange': ctx => {
+  'POST /newEmployeeChange': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = db.newEmployeeChange(data.eid, data.cway,
+    ctx.response.body = db.newEmployeeChange(data.eid, data.cway, 
       data.cdate, data.tdid, data.fdid);
   },
-  'POST /newRewards': ctx => {
+  'POST /newRewards': async (ctx, next) => {
     var data = ctx.request.body;
     ctx.response.body = db.newReward(data.eid, data.rreason,
-      data.rway, data.rdate, data.rmoney);
+       data.rway, data.rdate, data.rmoney);
   },
-  'POST /newTraining': ctx => {
+  'POST /newTraining': async (ctx, next) => {
     var data = ctx.request.body;
-    ctx.response.body = db.newTraining(data.eid, data.way,
+    ctx.response.body = db.newTraining(data.eid, data.way, 
       data.bdate, data.edate);
   }
 };
