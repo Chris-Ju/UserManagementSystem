@@ -6,6 +6,8 @@ const controller = require('./controller');
 
 const templating = require('./templating');
 
+const router = require('koa-router')();
+
 const app = new Koa();
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -37,7 +39,7 @@ app.use(templating('views', {
 }));
 
 // add controller:
-app.use(controller());
+app.use(controller()).use(router.allowedMethods());
 
 app.listen(3000);
 console.log('app started at port 3000...');
