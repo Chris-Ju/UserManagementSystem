@@ -12,7 +12,9 @@ module.exports = () => {
     }
     data = result;
     console.log('[QUERY Attendance SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return data;
   });
-  mysql.end();
-  return data;
+
 };

@@ -11,7 +11,9 @@ module.exports = (eid, rreason, rway, rdate, rmoney) => {
       return false;
     }
     console.log('[INSERT INTO Rewards SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return true;
   });
-  mysql.end();
-  return true;
+
 };

@@ -11,7 +11,9 @@ module.exports = (name) => {
       return false;
     }
     console.log('[INSERT Department SUCCESSFULLY]');
+  }).then(() => {
+    msql.end();
+    return true;
   });
-  msql.end();
-  return true;
+
 };

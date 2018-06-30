@@ -7,7 +7,7 @@ module.exports = (eid, away, bdate, edate) => {
   if (edate == "") {
     sql = 'INSERT INTO Attendance(eid, away, bdate) VALUES(?,?,?)';
     sqlparamas = [eid, away, bdate];
-  } 
+  }
 
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
@@ -16,7 +16,9 @@ module.exports = (eid, away, bdate, edate) => {
       return false;
     }
     console.log('[INSERT INTO Attendance SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return true;
   });
-  mysql.end();
-  return true;
+
 };

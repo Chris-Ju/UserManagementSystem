@@ -12,7 +12,9 @@ module.exports = () => {
     }
     data = result;
     console.log('[QUERY EmployeeChange SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return data;
   });
-  mysql.end();
-  return data;
+
 };

@@ -7,7 +7,7 @@ module.exports = (eid, salary, bdate, edate) => {
   if (edate == "") {
     sql = 'INSERT INTO Contracts(eid, salary, bdate) VALUES(?,?,?)';
     sqlparamas = [eid, salary, bdate];
-  } 
+  }
 
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
@@ -16,7 +16,9 @@ module.exports = (eid, salary, bdate, edate) => {
       return false;
     }
     console.log('[INSERT INTO Contracts SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return true;
   });
-  mysql.end();
-  return true;
+
 };

@@ -11,7 +11,9 @@ module.exports = (eid, way, bdate, edate) => {
       return false;
     }
     console.log('[INSERT INTO Training SUCCESSFULLY]');
+  }).then(() => {
+    mysql.end();
+    return true;
   });
-  mysql.end();
-  return true;
+
 };

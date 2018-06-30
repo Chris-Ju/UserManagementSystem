@@ -11,7 +11,8 @@ module.exports = (eid, cway, cdate, tdid, fdid) => {
       return false;
     }
     console.log('[INSERT EmployeeChange SUCCESSFULLY]');
+  }).then(() => {
+    msql.end();
+    return true;
   });
-  msql.end();
-  return true;
 };
