@@ -5,7 +5,7 @@ module.exports = () => {
       mysql.connect();
       var sql = 'SELECT username, uright FROM User';
       var data = [];
-      mysql.query(sql, function (err, result) {
+      yield mysql.query(sql, function (err, result) {
         if (err) {
           console.log('[QUERY ERROR] - ', err.message);
           mysql.end();
@@ -13,7 +13,7 @@ module.exports = () => {
         }
         data = result;
         console.log('[QUERY User SUCCESSFULLY]');
-      })
+      });
     })
     .then(() => {
       console.log(data);
