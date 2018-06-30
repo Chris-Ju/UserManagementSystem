@@ -1,22 +1,24 @@
 var mysql = require('./connection');
 
+var conn;
 
 module.exports = () => {
-  mysql.connect()
-    .then(() => {
+  mysql()
+    .then((connect) => {
+      conn = connect;
       var sql = 'SELECT username, uright FROM User';
       var data = [];
-      mysql.query(sql, function (err, result) {
+      coon.query(sql, function (err, result) {
           if (err) {
             console.log('[QUERY ERROR] - ', err.message);
-            mysql.end();
+            coon.end();
             return false;
           }
           data = result;
           console.log('[QUERY User SUCCESSFULLY]');
         })
         .then(() => {
-          mysql.end();
+          coon.end();
           return data;
         });
     });
