@@ -11,6 +11,7 @@ module.exports = () => {
       return false;
     }
     data = result;
+    console.log(data);
     console.log('[QUERY User SUCCESSFULLY]');
   });
   console.log(data);
