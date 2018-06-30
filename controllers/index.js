@@ -6,6 +6,7 @@ module.exports = {
     db.getUser((result) => {
       console.log(typeof(result));
       if (result != false) {
+        ctx.response.status = 200;
         ctx.response.body = result;
       }
     });
