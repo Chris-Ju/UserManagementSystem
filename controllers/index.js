@@ -4,9 +4,9 @@ var db = require('../model/db');
 module.exports = {
   'GET /GetUser': async (ctx) => {
     db.getUser((result) => {
-      console.log(result);
+      console.log(typeof(result));
       if (result != false) {
-        ctx.response.message = result;
+        ctx.response.body = result;
       }
     });
   },
