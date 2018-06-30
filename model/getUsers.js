@@ -2,7 +2,7 @@ var mysql = require('./connection');
 
 
 module.exports = () => {
-  var promise = new Promise(() => {
+  var promise = () => {
     mysql.connect();
     var sql = 'SELECT username, uright FROM User';
     var data = [];
@@ -15,7 +15,7 @@ module.exports = () => {
       data = result;
       console.log('[QUERY User SUCCESSFULLY]');
     });
-  });
+  };
   promise().then(() => {
     mysql.end();
     return data;
