@@ -4,7 +4,6 @@ var db = require('../model/db');
 module.exports = {
   'GET /GetUser': async (ctx, next) => {
     ctx.response.body = db.getUser();
-    await next();
   },
   'GET /GetEmployee': async (ctx, next) => {
     ctx.response.body = db.getEmployee();

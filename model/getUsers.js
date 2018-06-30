@@ -12,7 +12,8 @@ module.exports = () => {
     }
     data = result;
     console.log('[QUERY User SUCCESSFULLY]');
-    mysql.end();
-    return data;
   });
+  console.log(data);
+  mysql.end();
+  return data;
 };
