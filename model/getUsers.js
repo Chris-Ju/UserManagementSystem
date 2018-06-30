@@ -1,11 +1,10 @@
 var mysql = require('./connection');
 
-
-module.exports = async () => {
-  await mysql.connect();
+module.exports = () => {
+  mysql.connect();
   var sql = 'SELECT username, uright FROM User';
   var data = [];
-  await mysql.query(sql, function (err, result) {
+  mysql.query(sql, function (err, result) {
     if (err) {
       console.log('[QUERY ERROR] - ', err.message);
       mysql.end();
@@ -13,7 +12,7 @@ module.exports = async () => {
     }
     data = result;
     console.log('[QUERY User SUCCESSFULLY]');
+    mysql.end();
+    return data;
   });
-  await mysql.end();
-  return data;
 };
