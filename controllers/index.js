@@ -6,7 +6,7 @@ module.exports = {
     db.getUser((result) => {
       console.log(result);
       if (result != false) {
-        ctx.response.body = result;
+        ctx.response.message = result;
       }
     });
   },
