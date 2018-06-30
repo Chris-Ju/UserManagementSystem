@@ -6,7 +6,8 @@ module.exports = {
     await db.getUser((result) => {
       console.log(ctx);
       ctx.response.status = 200;
-      ctx.response.body = result;
+      ctx.response.message = result;
+      console.log(ctx);
     });
   },
   'GET /GetEmployee': async (ctx, next) => {
