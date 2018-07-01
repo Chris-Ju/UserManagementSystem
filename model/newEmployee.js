@@ -3,13 +3,13 @@ var md5 = require('md5');
 var pinyin = require('js-pinyin');
 
 module.exports = (name, birth, sex, hometown, body, department, callback) => {
-  mysql.connect();
+
   var sql = 'INSERT INTO Employee(ename, ebirth, status, esex, ehometown, ebody) VALUES(?,?,?,?,?,?)';
   var sqlparamas = [name, birth, 1, sex, hometown, body];
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
-      mysql.end();
+      
       callback(false);
     }
     console.log('[INSERT INTO Employee SUCCESSFULLY]');
@@ -32,7 +32,7 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
     mysql.query(sql, sqlParams, function (err, result) {
       if (err) {
         console.log('[INSERT ERROR] - ', err.message);
-        mysql.end();
+        
         callback(false);
       }
       console.log('[INSERT INTO EmployeeInDepartment SUCCESSFULLY]');
@@ -52,11 +52,11 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
-      mysql.end();
+      
       callback(false);
     }
     console.log('[INSERT INTO User SUCCESSFULLY]');
-    mysql.end();
+    
     callback(true);
   });
 
