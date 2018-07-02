@@ -11,7 +11,7 @@ module.exports = (username, password, callback) => {
       callback(false);
     }
     console.log('[QUERY Username and password SUCCESSFULLY]');
-    
+    console.log(result.length);
     if (result.length == 0) {
       callback(false);
     } else {
