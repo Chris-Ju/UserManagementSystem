@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 
-router.get('/signin', (req, res, next) => {
+router.post('/signin', (req, res, next) => {
   var data = req.body;
   db.login(data.username, data.password, (result) => {
     res.status(200);
