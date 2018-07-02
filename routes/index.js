@@ -20,7 +20,7 @@ router.get('/GetUser', (req, res, next) => {
   });
 });
 
-router.get('GetEmployee', (req, res, next) => {
+router.get('/GetEmployee', (req, res, next) => {
   db.getEmployee((result) => {
     res.status(200);
     res.send(result);

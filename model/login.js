@@ -3,7 +3,7 @@ var mysql = require('./connection');
 
 module.exports = (username, password, callback) => {
 
-  var sql = 'SELECT * FROM User WHERE username = ' + username + ' and password = ' + password;
+  var sql = 'SELECT * FROM User WHERE username = "' + username + '" and password = "' + password + '"';
   mysql.query(sql, function (err, result) {
     if (err) {
       console.log('[QUERY ERROR] - ', err.message);
