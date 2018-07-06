@@ -36,19 +36,16 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
           console.log('[INSERT INTO EmployeeInDepartment SUCCESSFULLY]');
 
 
-          sql = 'INSERT INTO User(username, password, uright) VALUE(?, ?, ?)';
+          sql = 'INSERT INTO User(username, password, uright) VALUE(?,?,?)';
           var username = name;
           var password = md5("123456");
-          console.log(username);
-          sqlparamas = [username, password, 2];
+          sqlParams = [username, password, 2];
           mysql.query(sql, sqlParams, function (err, result) {
             if (err) {
               console.log('[INSERT ERROR] - ', err.message);
-
               callback(false);
             }
             console.log('[INSERT INTO User SUCCESSFULLY]');
-
             callback(true);
           });
         });

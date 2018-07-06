@@ -71,7 +71,7 @@ router.get('/GetTraining', (req, res, next) => {
 
 router.post('/newAttendance', (req, res, next) => {
   var data = req.body;
-  db.newAttendance(data.eid, data.away, data.bdate, data.edate, () => {
+  db.newAttendance(data.eid, data.away, data.bdate, data.edate, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -79,7 +79,7 @@ router.post('/newAttendance', (req, res, next) => {
 
 router.post('/newContract', (req, res, next) => {
   var data = req.body;
-  db.newContract(data.eid, data.salary, data.bdate, data.edate, () => {
+  db.newContract(data.eid, data.salary, data.bdate, data.edate, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -87,7 +87,7 @@ router.post('/newContract', (req, res, next) => {
 
 router.post('/newDepartment', (req, res, next) => {
   var data = req.body;
-  db.newDepartment(data.name, () => {
+  db.newDepartment(data.name, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -95,7 +95,7 @@ router.post('/newDepartment', (req, res, next) => {
 
 router.post('/newEmployee', (req, res, next) => {
   var data = req.body;
-  db.newEmployee(data.name, data.birth, data.sex, data.hometown, data.body, data.deparment, () => {
+  db.newEmployee(data.name, data.birth, data.sex, data.hometown, data.body, data.deparment, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -103,7 +103,7 @@ router.post('/newEmployee', (req, res, next) => {
 
 router.post('/newEmployeeChange', (req, res, next) => {
   var data = req.body;
-  db.newEmployeeChange(data.eid, data.cway, data.cdate, data.tdid, data.fdid, () => {
+  db.newEmployeeChange(data.eid, data.cway, data.cdate, data.tdid, data.fdid, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -111,7 +111,7 @@ router.post('/newEmployeeChange', (req, res, next) => {
 
 router.post('/newReward', (req, res, next) => {
   var data = req.body;
-  db.newReward(data.eid, data.rreason, data.rway, data.rdate, data.rmoney, () => {
+  db.newReward(data.eid, data.rreason, data.rway, data.rdate, data.rmoney, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -119,7 +119,7 @@ router.post('/newReward', (req, res, next) => {
 
 router.post('/newTraining', (req, res, next) => {
   var data = req.body;
-  db.newTraining(data.eid, data.way, data.bdate, data.edate, () => {
+  db.newTraining(data.eid, data.way, data.bdate, data.edate, (result) => {
     res.status(200);
     res.send(result);
   });
