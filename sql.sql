@@ -10,7 +10,7 @@ create table Employee(
   ehometown char(255),
   ebody char(255),
   primary key(eid)
-) auto_increment = 1;
+) auto_increment = 0;
 
 create table Department(
   did int not null auto_increment,
@@ -18,7 +18,7 @@ create table Department(
   dmanager int,
   foreign key(dmanager) references Employee(eid),
   primary key(did)
-) auto_increment = 1;
+) auto_increment = 0;
 
 create table EmployeeInDepartment(
   eid int not null,
