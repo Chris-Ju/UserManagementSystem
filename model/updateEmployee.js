@@ -11,6 +11,7 @@ module.exports = (eid, name, birth, hometown, body, callback) => {
       callback(false);
     }
     console.log('[UPDATE Employee SUCCESSFULLY]');
+    callback(true);
   });
   
 };
