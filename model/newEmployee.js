@@ -1,11 +1,14 @@
-var mysql = require('./connection');
+var mysql_1 = require('./connection');
+var mysql_2 = require('./connection');
+var mysql_3 = require('./connection');
+var mysql_4 = require('./connection');
 var md5 = require('md5');
 
 module.exports = (name, birth, sex, hometown, body, department, callback) => {
 
   var sql = 'INSERT INTO Employee(ename, ebirth, status, esex, ehometown, ebody) VALUES(?,?,?,?,?,?)';
   var sqlParams = [name, birth, 1, sex, hometown, body];
-  mysql.query(sql, sqlParams, function (err, result) {
+  mysql_1.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       callback(false);
@@ -14,7 +17,7 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
   });
   sql = 'INSERT INTO EmployeeChange(eid, cdate, tdid) (SELECT eid, NOW(), did FROM (SELECT eid, did, dname FROM Employee JOIN Department) AS tb WHERE tb.dname = ? ORDER BY tb.eid DESC LIMIT 1)';
   sqlParams = [department];
-  mysql.query(sql, sqlParams, function (err, result) {
+  mysql_2.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       callback(false);
@@ -23,7 +26,7 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
 
   });
   sql = 'INSERT INTO EmployeeInDepartment (SELECT eid, did FROM (SELECT eid, did, dname FROM Employee JOIN Department) AS tb WHERE tb.dname = ? ORDER BY tb.eid DESC LIMIT 1)';
-  mysql.query(sql, sqlParams, function (err, result) {
+  mysql_3.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       callback(false);
@@ -35,7 +38,7 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
   var username = name;
   var password = md5("123456");
   sqlParams = [username, password, 2];
-  mysql.query(sql, sqlParams, function (err, result) {
+  mysql_4.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);
       callback(false);
