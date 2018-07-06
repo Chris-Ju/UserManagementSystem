@@ -125,13 +125,6 @@ router.post('/newTraining', (req, res, next) => {
   });
 });
 
-router.put('/updateContract', (req, res, next) => {
-  var data = req.body;
-  db.updateContract(data.eid, data.salary, data.bdate, data.edate, (result) => {
-    res.status(200);
-    res.send(result);
-  });
-});
 
 router.put('/updateContract', (req, res, next) => {
   var data = req.body;
