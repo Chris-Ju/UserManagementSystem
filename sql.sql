@@ -129,5 +129,8 @@ insert into EmployeeChangeWay value(1, "take office");
 insert into EmployeeChangeWay value(2, "departure");
 insert into EmployeeChangeWay value(3, "transfer department");
 
+insert into Department(did, dname) value(0, "NULL");
+insert into Employee(eid, ename, ebirth, status) value(0, "NULL", "0000-01-01", 1);
+
 
 
