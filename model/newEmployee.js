@@ -36,12 +36,12 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
           }
           console.log('[INSERT INTO EmployeeInDepartment SUCCESSFULLY]');
 
-          
-          sql = 'INSERT INTO User(username, password) VALUE(?, ?)';
+
+          sql = 'INSERT INTO User(username, password, uright) VALUE(?, ?, ?)';
           var username = name;
           var password = md5("123456");
           console.log(username);
-          sqlparamas = [username, password];
+          sqlparamas = [username, password, 2];
           mysql.query(sql, sqlParams, function (err, result) {
             if (err) {
               console.log('[INSERT ERROR] - ', err.message);
