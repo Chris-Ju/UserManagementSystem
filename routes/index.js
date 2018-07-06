@@ -95,7 +95,7 @@ router.post('/newDepartment', (req, res, next) => {
 
 router.post('/newEmployee', (req, res, next) => {
   var data = req.body;
-  db.newEmployee(data.name, data.birth, data.sex, data.hometown, data.body, data.deparment, (result) => {
+  db.newEmployee(data.name, data.birth, data.sex, data.hometown, data.body, data.department, (result) => {
     res.status(200);
     res.send(result);
   });
