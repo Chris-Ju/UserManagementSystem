@@ -2,7 +2,7 @@ var mysql = require('./connection');
 
 module.exports = (eid, away, bdate, edate, callback) => {
 
-  var sql = 'INSERT INTO Contracts(eid, away, bdate, edate) VALUES(?,?,?,?)';
+  var sql = 'INSERT INTO Attendance(eid, away, bdate, edate) VALUES(?,?,?,?)';
   var sqlParams = [eid, away, bdate, edate];
   if (edate == "") {
     sql = 'INSERT INTO Attendance(eid, away, bdate) VALUES(?,?,?)';
