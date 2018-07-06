@@ -125,4 +125,52 @@ router.post('/newTraining', (req, res, next) => {
   });
 });
 
+router.put('/updateContract', (req, res, next) => {
+  var data = req.body;
+  db.updateContract(data.eid, data.salary, data.bdate, data.edate, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.put('/updateContract', (req, res, next) => {
+  var data = req.body;
+  db.updateContract(data.eid, data.salary, data.bdate, data.edate, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.put('/updateDepartment', (req, res, next) => {
+  var data = req.body;
+  db.updateDepartment(data.did, data.name, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.put('/updateEmployee', (req, res, next) => {
+  var data = req.body;
+  db.updateEmployee(data.eid, data.name, data.birth, data.hometown, data.body, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.put('/updateReward', (req, res, next) => {
+  var data = req.body;
+  db.updateReward(data.eid, data.rreason, data.rway, data.rdate, data.rmoney, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
+router.put('/updateTraning', (req, res, next) => {
+  var data = req.body;
+  db.updateTraining(data.eid, data.way, data.bdate, data.edate, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
 module.exports = router;

@@ -14,5 +14,10 @@ module.exports = {
   newEmployee : require('./newEmployee'),
   newEmployeeChange : require('./newEmployeeChange'),
   newReward : require('./newReward'),
-  newTraining : require('./newTraining')
+  newTraining : require('./newTraining'),
+  updateContract : require('./updateContract'),
+  updateDepartment : require('./updateDepartment'),
+  updateEmployee : require('./updateEmployee'),
+  updateReward : require('./updateReward'),
+  updateTraining: require('./updateTraining')
 };
