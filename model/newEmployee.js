@@ -21,7 +21,7 @@ module.exports = (name, birth, sex, hometown, body, department, callback) => {
       mysql.end();
       callback(false);
     }
-    console.log('[INSERT EmployeeChange SUCCESSFULLY]');
+    console.log('[INSERT INTO EmployeeChange SUCCESSFULLY]');
 
   });
   sql = 'INSERT INTO EmployeeInDepartment (SELECT eid, did FROM (SELECT eid, did, dname FROM Employee JOIN Department) AS tb WHERE tb.dname = ? ORDER BY tb.eid DESC LIMIT 1)';

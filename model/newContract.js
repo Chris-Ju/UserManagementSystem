@@ -1,8 +1,8 @@
 var mysql = require('./connection');
 
-module.exports = (eid, salary, bdate, edate) => {
+module.exports = (eid, salary, bdate, edate, callback) => {
   var sql = 'INSERT INTO Contracts(eid, salary, bdate, edate) VALUES(?,?,?,?)';
-  var sqlparamas = [eid, salary, bdate, edate];
+  var sqlParams = [eid, salary, bdate, edate];
   if (edate == "") {
     sql = 'INSERT INTO Contracts(eid, salary, bdate) VALUES(?,?,?)';
     sqlparamas = [eid, salary, bdate];
