@@ -1,9 +1,9 @@
 var mysql = require('./connection');
 
-module.exports = (name, callback) => {
+module.exports = (name, eid, callback) => {
 
-  var sql = 'INSERT INTO Department(dname) VALUES(?)';
-  var sqlParams = [name];
+  var sql = 'INSERT INTO Department(dname, dmanager) VALUES(?)';
+  var sqlParams = [name, eid];
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[INSERT ERROR] - ', err.message);

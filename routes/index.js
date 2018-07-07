@@ -87,7 +87,7 @@ router.post('/newContract', (req, res, next) => {
 
 router.post('/newDepartment', (req, res, next) => {
   var data = req.body;
-  db.newDepartment(data.name, (result) => {
+  db.newDepartment(data.name, data.eid, (result) => {
     res.status(200);
     res.send(result);
   });
@@ -136,7 +136,7 @@ router.put('/updateContract', (req, res, next) => {
 
 router.put('/updateDepartment', (req, res, next) => {
   var data = req.body;
-  db.updateDepartment(data.did, data.name, (result) => {
+  db.updateDepartment(data.did, data.eid, data.name, (result) => {
     res.status(200);
     res.send(result);
   });
