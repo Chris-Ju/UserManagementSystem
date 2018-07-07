@@ -2,7 +2,7 @@ var mysql = require('./connection');
 
 module.exports = (name, eid, callback) => {
 
-  var sql = 'INSERT INTO Department(dname, dmanager) VALUES(?)';
+  var sql = 'INSERT INTO Department(dname, dmanager) VALUES(?, ?)';
   var sqlParams = [name, eid];
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
