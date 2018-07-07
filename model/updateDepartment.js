@@ -1,6 +1,6 @@
 var mysql = require('./connection');
 
-module.exports = (did, name, eid, callback) => {
+module.exports = (did, eid, name, callback) => {
 
   var sql = 'UPDATE Department SET dname = ?, dmanager = ? where did = ?';
   var sqlParams = [name, eid, did];
