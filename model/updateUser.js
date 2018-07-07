@@ -4,7 +4,7 @@ var md5 = require('md5');
 module.exports = (username, password, callback) => {
   var passwordmd5 = md5(password);
   var sql = 'UPDATE User SET password = ? where username = ?';
-  var sqlParams = [passwordmd5, usernmae];
+  var sqlParams = [passwordmd5, username];
   mysql.query(sql, sqlParams, function (err, result) {
     if (err) {
       console.log('[UPDATE ERROR] - ', err.message);
