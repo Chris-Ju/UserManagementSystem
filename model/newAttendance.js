@@ -16,6 +16,6 @@ module.exports = (eid, away, bdate, edate, callback) => {
     }
     console.log('[INSERT INTO Attendance SUCCESSFULLY]');
 
-    callback(result);
+    callback(true);
   });
 };
