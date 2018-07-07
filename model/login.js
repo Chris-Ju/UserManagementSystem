@@ -14,7 +14,7 @@ module.exports = (username, password, callback) => {
     if (result.length == 0) {
       callback(false);
     } else {
-      callback(result[0].uright);
+      callback(result[0]);
     }
   });
 };
