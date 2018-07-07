@@ -19,5 +19,6 @@ module.exports = {
   updateDepartment : require('./updateDepartment'),
   updateEmployee : require('./updateEmployee'),
   updateReward : require('./updateReward'),
-  updateTraining: require('./updateTraining')
+  updateTraining: require('./updateTraining'),
+  updateUser: require('./updateUser')
 };

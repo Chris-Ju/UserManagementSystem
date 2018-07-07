@@ -166,4 +166,12 @@ router.put('/updateTraning', (req, res, next) => {
   });
 });
 
+router.put('/updateUser', (req, res, next) => {
+  var data = req.body;
+  db.updateUser(data.username, data.password, (result) => {
+    res.status(200);
+    res.send(result);
+  });
+});
+
 module.exports = router;
